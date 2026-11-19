@@ -6,6 +6,16 @@ build/t: src/tile.c tests/test_tile.c src/tile.h
 	$(CC) $(CFLAGS) src/tile.c tests/test_tile.c -o $@
 test: build/t
 	./build/t
+slope-test: build/tslope
+	./build/tslope
+build/tslope: src/tile.c src/slope.c tests/test_slope.c src/tile.h src/slope.h
+	@mkdir -p build
+	$(CC) $(CFLAGS) src/tile.c src/slope.c tests/test_slope.c -o $@ -lm
+slope-demo: build/sdemo
+	./build/sdemo
+build/sdemo: src/tile.c src/slope.c src/slope_demo.c src/tile.h src/slope.h
+	@mkdir -p build
+	$(CC) $(CFLAGS) src/tile.c src/slope.c src/slope_demo.c -o $@ -lm
 tool: build/app
 build/app: src/tile.c src/config.c src/state.c src/app_main.c
 	@mkdir -p build out
@@ -15,4 +25,4 @@ demo: tool
 
 clean:
 	rm -rf build
-.PHONY: all test clean
+.PHONY: all test slope-test slope-demo clean
