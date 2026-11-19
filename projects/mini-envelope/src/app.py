@@ -21,7 +21,7 @@ def main(argv):
         return 4
     samples = [0.5] * 100
     env = rms_envelope(samples, window)
-    if save_state("out/state.bin", "envelope", len(env), max(env)):
+    if save_state("../out/state.bin", "envelope", len(env), max(env)):
         print("state failed")
         return 5
     print("ok frames=%d peak=%.3f" % (len(env), max(env)))
