@@ -16,5 +16,16 @@ int main(int argc, char** argv) {
     double span = (double)(o2x - o1x);
     if (state_save("out/state.bin", "shadow", 1, span) != 0) { printf("state failed\n"); return 5; }
     printf("ok span=%.3f\n", span);
+
+    /* soft area-light demo (additive; hard-path output above is unchanged) */
+    shadow_soft_t soft;
+    soft.light_size = (float)config_get_f(buf, "light_size", 1.0);
+    soft.trans_width = (float)config_get_f(buf, "trans_width", 0.5);
+    float vis;
+    int rc = shadow_soft_factor(5.0f, 20.0f, (float)lx, (float)ly,
+                                0.0f, 10.0f, 10.0f, 10.0f, &soft, &vis);
+    if (rc != 0) { printf("soft failed rc=%d\n", rc); return 6; }
+    printf("soft size=%.3f width=%.3f center_vis=%.3f\n",
+           soft.light_size, soft.trans_width, vis);
     return 0;
 }
