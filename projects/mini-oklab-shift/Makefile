@@ -6,6 +6,13 @@ build/t: src/oklab.c tests/test_oklab.c src/oklab.h
 	$(CC) $(CFLAGS) src/oklab.c tests/test_oklab.c -lm -o $@
 test: build/t
 	./build/t
+tool: build/app
+build/app: src/oklab.c src/config.c src/state.c src/app_main.c
+	@mkdir -p build out
+	$(CC) $(CFLAGS) $^ -lm -o $@
+demo: tool
+	./build/app demo.cfg
+
 clean:
 	rm -rf build
 .PHONY: all test clean
