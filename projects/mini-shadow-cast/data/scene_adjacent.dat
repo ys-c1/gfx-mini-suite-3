@@ -1,0 +1,9 @@
+# S1 接缝场景：两段共线墙在端点 (5,10) 精确相接
+# 格式: light <x> <y> / tol <v> / seg <x1> <y1> <x2> <y2> / probe <x> <y>
+light 5 0
+tol 0.01
+seg 0 10 5 10
+seg 5 10 10 10
+probe 5 20
+probe 2.5 20
+probe 7.5 20

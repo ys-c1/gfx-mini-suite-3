@@ -6,6 +6,11 @@ build/t: src/shadow.c tests/test_shadow.c src/shadow.h
 	$(CC) $(CFLAGS) src/shadow.c tests/test_shadow.c -lm -o $@
 test: build/t
 	./build/t
+report: build/report
+	./build/report
+build/report: src/shadow.c tests/report_main.c src/shadow.h
+	@mkdir -p build
+	$(CC) $(CFLAGS) src/shadow.c tests/report_main.c -lm -o $@
 tool: build/app
 build/app: src/shadow.c src/config.c src/state.c src/app_main.c
 	@mkdir -p build out
@@ -15,4 +20,4 @@ demo: tool
 
 clean:
 	rm -rf build
-.PHONY: all test clean
+.PHONY: all test report clean
