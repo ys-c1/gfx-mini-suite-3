@@ -40,3 +40,8 @@ int config_get_i(const char* buf, const char* key, int fallback) {
     if (find_key(buf, key, tmp, sizeof(tmp)) != 0) return fallback;
     return atoi(tmp);
 }
+
+int config_has_key(const char* buf, const char* key) {
+    char tmp[2];
+    return (buf && key && find_key(buf, key, tmp, sizeof(tmp)) == 0) ? 1 : 0;
+}
