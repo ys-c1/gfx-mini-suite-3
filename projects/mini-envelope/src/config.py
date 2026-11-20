@@ -17,3 +17,8 @@ def get_float(buf, key, fallback):
             except ValueError:
                 return fallback
     return fallback
+
+
+def get_int(buf, key, fallback):
+    value = get_float(buf, key, float(fallback))
+    return int(value)
