@@ -1,0 +1,30 @@
+cc -O2 -Wall -Wextra -std=c11 src/shadow.c tests/converge_shadow.c -lm -o build/converge
+./build/converge
+[S1] exact union area = 446.261108
+    grid  raster_area        |gap|        bound     within
+      32   447.934230    1.673e+00    2.543e+02        yes
+      64   446.449600    1.885e-01    1.229e+02        yes
+     128   446.555645    2.945e-01    6.040e+01        yes
+     256   445.773563    4.875e-01    2.994e+01        yes
+     512   446.201057    6.005e-02    1.490e+01        yes
+[S2] exact union area = 588.073098
+    grid  raster_area        |gap|        bound     within
+      32   594.511723    6.439e+00    3.109e+02        yes
+      64   587.395100    6.780e-01    1.502e+02        yes
+     128   587.668816    4.043e-01    7.382e+01        yes
+     256   587.549065    5.240e-01    3.659e+01        yes
+     512   588.280401    2.073e-01    1.821e+01        yes
+[S3] exact union area = 350.117585
+    grid  raster_area        |gap|        bound     within
+      32   358.027216    7.910e+00    1.888e+02        yes
+      64   347.649616    2.468e+00    9.181e+01        yes
+     128   350.000791    1.168e-01    4.525e+01        yes
+     256   348.967085    1.151e+00    2.246e+01        yes
+     512   350.603786    4.862e-01    1.119e+01        yes
+[S4] exact union area = 661.613104
+    grid  raster_area        |gap|        bound     within
+      32   685.419866    2.381e+01    3.646e+02        yes
+      64   658.268551    3.345e+00    1.763e+02        yes
+     128   659.550696    2.062e+00    8.663e+01        yes
+     256   660.135203    1.478e+00    4.294e+01        yes
+     512   662.279969    6.669e-01    2.137e+01        yes

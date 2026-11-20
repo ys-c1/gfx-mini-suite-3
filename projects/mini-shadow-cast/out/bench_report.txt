@@ -1,0 +1,103 @@
+cc -O2 -Wall -Wextra -std=c11 src/shadow.c tests/bench_shadow.c -lm -o build/bench
+./build/bench
+mini-shadow-cast overlap clipping benchmark
+--------------------------------------------------------------------
+[S1 top-centre light] light=(5.0,0.0) reach=20.0  rc=0
+  occluder A id=0 depth=5 seg=(0,10)-(10,10)
+  occluder B id=1 depth=2 seg=(3,12)-(13,12)
+  winner=1 tie=0 depth_missing=0 pieces=5 overlap_verts=4
+  area  quadA=338.885437 quadB=318.632629 overlap=211.256957 union(exact)=446.261108 partition=446.261149
+  raster grid=256 cells_union=33629 cells_partition=33629 match=yes
+  raster area=445.773563  |gap|=4.875e-01  error bound=2.994e+01  within=yes
+  timing iters=50000 total=24.268 ms avg=485.4 ns/call
+  pieces detail:
+    #0 owner=1 OVERLAP  n= 4 area=211.256957 verts=(11.000,12.000) (18.944,27.889) (0.352,27.889) (3.000,12.000)
+    #1 owner=1 diff     n= 4 area=57.715511 verts=(11.000,12.000) (13.000,12.000) (24.094,28.641) (19.605,29.209)
+    #2 owner=1 diff     n= 4 area=49.660201 verts=(18.944,27.889) (19.605,29.209) (-0.288,31.728) (0.352,27.889)
+    #3 owner=0 diff     n= 4 area=22.000000 verts=(0.000,10.000) (10.000,10.000) (11.000,12.000) (-1.000,12.000)
+    #4 owner=0 diff     n= 4 area=105.628481 verts=(0.352,27.889) (-8.944,27.889) (-1.000,12.000) (3.000,12.000)
+--------------------------------------------------------------------
+[S2 off-centre right light] light=(12.0,0.0) reach=24.0  rc=0
+  occluder A id=10 depth=1 seg=(0,8)-(8,8)
+  occluder B id=11 depth=4 seg=(6,8)-(14,8)
+  winner=10 tie=0 depth_missing=0 pieces=5 overlap_verts=5
+  area  quadA=282.004237 quadB=393.454522 overlap=87.385661 union(exact)=588.073098 partition=588.073125
+  raster grid=256 cells_union=34345 cells_partition=34345 match=yes
+  raster area=587.549065  |gap|=5.240e-01  error bound=3.659e+01  within=yes
+  timing iters=50000 total=25.734 ms avg=514.7 ns/call
+  pieces detail:
+    #0 owner=10 OVERLAP  n= 5 area=87.385661 verts=(6.000,8.000) (8.000,8.000) (-2.059,28.118) (-7.138,27.383) (-8.171,26.894)
+    #1 owner=10 diff     n= 3 area=3.672863 verts=(-2.059,28.118) (-2.733,29.466) (-7.138,27.383)
+    #2 owner=10 diff     n= 4 area=190.945720 verts=(0.000,8.000) (6.000,8.000) (-8.171,26.894) (-19.969,21.313)
+    #3 owner=11 diff     n= 4 area=305.854873 verts=(8.000,8.000) (14.000,8.000) (19.821,31.283) (-2.059,28.118)
+    #4 owner=11 diff     n= 3 area=0.214007 verts=(-7.138,27.383) (-8.400,27.200) (-8.171,26.894)
+--------------------------------------------------------------------
+[S3 light above light row] light=(5.0,6.0) reach=18.0  rc=0
+  occluder A id=20 depth=3 seg=(0,10)-(10,10)
+  occluder B id=21 depth=3.5 seg=(2,10)-(8,10)
+  winner=20 tie=0 depth_missing=0 pieces=4 overlap_verts=4
+  area  quadA=270.493870 quadB=241.920022 overlap=162.296307 union(exact)=350.117585 partition=350.117577
+  raster grid=256 cells_union=34434 cells_partition=34434 match=yes
+  raster area=348.967085  |gap|=1.151e+00  error bound=2.246e+01  within=yes
+  timing iters=50000 total=24.541 ms avg=490.8 ns/call
+  pieces detail:
+    #0 owner=20 OVERLAP  n= 4 area=162.296307 verts=(2.000,10.000) (8.000,10.000) (16.433,21.245) (-6.433,21.245)
+    #1 owner=20 diff     n= 4 area=54.098776 verts=(8.000,10.000) (10.000,10.000) (24.056,21.245) (16.433,21.245)
+    #2 owner=20 diff     n= 4 area=54.098787 verts=(0.000,10.000) (2.000,10.000) (-6.433,21.245) (-14.056,21.245)
+    #3 owner=21 diff     n= 4 area=79.623707 verts=(16.433,21.245) (18.800,24.400) (-8.800,24.400) (-6.433,21.245)
+--------------------------------------------------------------------
+[S4 low side light, nested shadows] light=(8.0,-4.0) reach=30.0  rc=0
+  occluder A id=30 depth=7 seg=(1,9)-(9,9)
+  occluder B id=31 depth=2.5 seg=(4,11)-(12,11)
+  winner=31 tie=0 depth_missing=0 pieces=5 overlap_verts=4
+  area  quadA=468.407662 quadB=455.962726 overlap=262.757284 union(exact)=661.613104 partition=661.613106
+  raster grid=256 cells_union=35011 cells_partition=35011 match=yes
+  raster area=660.135203  |gap|=1.478e+00  error bound=4.294e+01  within=yes
+  timing iters=50000 total=24.156 ms avg=483.1 ns/call
+  pieces detail:
+    #0 owner=31 OVERLAP  n= 4 area=262.757284 verts=(9.154,11.000) (11.301,38.912) (-2.903,36.886) (4.000,11.000)
+    #1 owner=31 diff     n= 4 area=162.217524 verts=(9.154,11.000) (12.000,11.000) (19.730,39.987) (11.384,39.987)
+    #2 owner=31 diff     n= 4 area=30.987937 verts=(11.301,38.912) (11.384,39.987) (-3.730,39.987) (-2.903,36.886)
+    #3 owner=30 diff     n= 4 area=17.230769 verts=(1.000,9.000) (9.000,9.000) (9.154,11.000) (-0.077,11.000)
+    #4 owner=30 diff     n= 4 area=188.419592 verts=(-2.903,36.886) (-13.223,35.414) (-0.077,11.000) (4.000,11.000)
+--------------------------------------------------------------------
+[E1 equal depth (lower-id tie-break)] light=(5.0,0.0) reach=20.0  rc=0
+  occluder A id=5 depth=3 seg=(0,10)-(10,10)
+  occluder B id=6 depth=3 seg=(3,10)-(13,10)
+  winner=5 tie=1 depth_missing=0 pieces=5 overlap_verts=5
+  area  quadA=338.885437 quadB=329.285911 overlap=232.176155 union(exact)=435.995193 partition=435.995215
+  raster grid=256 cells_union=34939 cells_partition=34939 match=yes
+  raster area=435.745101  |gap|=2.501e-01  error bound=2.779e+01  within=yes
+  timing iters=50000 total=28.323 ms avg=566.5 ns/call
+  pieces detail:
+    #0 owner=5 OVERLAP  n= 5 area=232.176155 verts=(3.000,10.000) (10.000,10.000) (18.349,26.698) (10.473,27.889) (-0.578,27.889)
+    #1 owner=5 diff     n= 3 area=5.043651 verts=(18.349,26.698) (18.944,27.889) (10.473,27.889)
+    #2 owner=5 diff     n= 4 area=101.665639 verts=(0.000,10.000) (3.000,10.000) (-0.578,27.889) (-8.944,27.889)
+    #3 owner=6 diff     n= 4 area=87.588887 verts=(10.000,10.000) (13.000,10.000) (25.494,25.617) (18.349,26.698)
+    #4 owner=6 diff     n= 3 area=9.520883 verts=(10.473,27.889) (-0.922,29.612) (-0.578,27.889)
+--------------------------------------------------------------------
+[E2 missing depth (NaN = +infinity)] light=(5.0,0.0) reach=20.0  rc=0
+  occluder A id=2 depth=0 seg=(0,10)-(10,10)
+  occluder B id=1 depth=3 seg=(3,10)-(13,10)
+  winner=1 tie=0 depth_missing=1 pieces=5 overlap_verts=5
+  area  quadA=338.885437 quadB=329.285911 overlap=232.176155 union(exact)=435.995193 partition=435.995215
+  raster grid=256 cells_union=34939 cells_partition=34939 match=yes
+  raster area=435.745101  |gap|=2.501e-01  error bound=2.779e+01  within=yes
+  timing iters=50000 total=25.701 ms avg=514.0 ns/call
+  pieces detail:
+    #0 owner=1 OVERLAP  n= 5 area=232.176155 verts=(3.000,10.000) (10.000,10.000) (18.349,26.698) (10.473,27.889) (-0.578,27.889)
+    #1 owner=1 diff     n= 4 area=87.588887 verts=(10.000,10.000) (13.000,10.000) (25.494,25.617) (18.349,26.698)
+    #2 owner=1 diff     n= 3 area=9.520883 verts=(10.473,27.889) (-0.922,29.612) (-0.578,27.889)
+    #3 owner=2 diff     n= 3 area=5.043651 verts=(18.349,26.698) (18.944,27.889) (10.473,27.889)
+    #4 owner=2 diff     n= 4 area=101.665639 verts=(0.000,10.000) (3.000,10.000) (-0.578,27.889) (-8.944,27.889)
+--------------------------------------------------------------------
+[E3 fully coincident occluders] light=(5.0,0.0) reach=20.0  rc=0
+  occluder A id=0 depth=2 seg=(0,10)-(10,10)
+  occluder B id=1 depth=8 seg=(0,10)-(10,10)
+  winner=0 tie=0 depth_missing=0 pieces=1 overlap_verts=4
+  area  quadA=338.885437 quadB=338.885437 overlap=338.885437 union(exact)=338.885437 partition=338.885437
+  raster grid=256 cells_union=36676 cells_partition=36676 match=yes
+  raster area=337.878613  |gap|=1.007e+00  error bound=8.612e+00  within=yes
+  timing iters=50000 total=7.741 ms avg=154.8 ns/call
+  pieces detail:
+    #0 owner=0 OVERLAP  n= 4 area=338.885437 verts=(0.000,10.000) (10.000,10.000) (18.944,27.889) (-8.944,27.889)

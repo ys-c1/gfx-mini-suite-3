@@ -1,0 +1,1 @@
+fuzz: 20000 cases, overlap=10237 disjoint=9763 ties=1118 missing_hits=4677 seam_1cell=2 worst_rel_err=8.18959e-07 bad=0
