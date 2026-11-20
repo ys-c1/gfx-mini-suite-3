@@ -13,6 +13,12 @@ build/app: src/path.cpp src/config.c src/state.c src/app_main.cpp
 demo: tool
 	./build/app demo.cfg
 
+report: build/report
+build/report: tools/resample_report.cpp src/path.cpp src/config.c demo.cfg
+	@mkdir -p build
+	$(CXX) $(CXXFLAGS) -Isrc tools/resample_report.cpp src/path.cpp src/config.c -o $@
+	./build/report demo.cfg
+
 clean:
 	rm -rf build
-.PHONY: all test clean
+.PHONY: all test clean report
