@@ -1,6 +1,6 @@
 PYTHON ?= python3
 all:
-	$(PYTHON) -m py_compile src/envelope.py src/config.py src/state.py src/app.py
+	$(PYTHON) -m py_compile src/envelope.py src/config.py src/state.py src/app.py src/compressor.py src/signals.py
 test: all
 	$(PYTHON) tests/test_envelope.py
 tool: all
