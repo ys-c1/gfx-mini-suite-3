@@ -6,7 +6,7 @@
 |---|---|---|
 | projects/mini-shadow-cast | C11 | 2D 线段投影与遮挡判定 |
 | projects/mini-tile-collide | C11 | 图块碰撞与 AABB 判定 |
-| projects/mini-path-clean | C++17 | 折线共线点清理与长度 |
+| projects/mini-path-clean | C++17 | 折线共线点清理、长度与细分式圆滑 |
 | projects/mini-envelope | Python 3 | 分帧 RMS 包络 |
 | projects/mini-oklab-shift | C11 | sRGB 线性化与亮度偏移 |
 
