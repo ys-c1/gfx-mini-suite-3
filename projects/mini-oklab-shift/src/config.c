@@ -40,3 +40,18 @@ int config_get_i(const char* buf, const char* key, int fallback) {
     if (find_key(buf, key, tmp, sizeof(tmp)) != 0) return fallback;
     return atoi(tmp);
 }
+
+int config_get_rgb(const char* buf, const char* key, unsigned char rgb[3]) {
+    char tmp[64];
+    if (!buf || !key || !rgb) return -1;
+    if (find_key(buf, key, tmp, sizeof(tmp)) != 0) return 1;
+    int r, g, b;
+    char tail;
+    int got = sscanf(tmp, " %d , %d , %d %c", &r, &g, &b, &tail);
+    if (got != 3) return -1; /* 字段不足或存在尾随垃圾 */
+    if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) return -1;
+    rgb[0] = (unsigned char)r;
+    rgb[1] = (unsigned char)g;
+    rgb[2] = (unsigned char)b;
+    return 0;
+}

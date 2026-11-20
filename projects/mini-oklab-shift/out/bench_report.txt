@@ -1,0 +1,3 @@
+light=warm_2700k cct=2700 ref_calc=255,173,89 ref_cfg=255,173,89 drift=0 dE_cast_mean=37.81 dE_adapt_mean=0.43 dE_adapt_max=1.28 hue_shift_max=1.49 gray_dev_max=1 us_per_iter=3856.0 us_per_pixel=0.0386
+light=day_6500k cct=6500 ref_calc=255,255,255 ref_cfg=255,255,255 drift=0 dE_cast_mean=0.00 dE_adapt_mean=0.00 dE_adapt_max=0.00 hue_shift_max=0.00 gray_dev_max=1 us_per_iter=3914.4 us_per_pixel=0.0391
+light=cool_9000k cct=9000 ref_calc=211,227,255 ref_cfg=211,227,255 drift=0 dE_cast_mean=11.78 dE_adapt_mean=0.10 dE_adapt_max=0.67 hue_shift_max=0.87 gray_dev_max=2 us_per_iter=3974.8 us_per_pixel=0.0397
